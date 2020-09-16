@@ -12,8 +12,12 @@ GameObject:
   - component: {fileID: 1689354608959160091}
   - component: {fileID: 1689354608959160092}
   - component: {fileID: 1689354608959160093}
+  - component: {fileID: 5721243516772894014}
   - component: {fileID: 8054229527284872875}
   - component: {fileID: -693520152440474342}
+  - component: {fileID: 8890583256301881274}
+  - component: {fileID: 4734866396643943147}
+  - component: {fileID: 8731381113947539128}
   m_Layer: 0
   m_Name: PlayerPrefab
   m_TagString: Untagged
@@ -94,6 +98,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &5721243516772894014
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1689354608959160094}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ab3f27420e2d6ef45aa667495c3e239e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &8054229527284872875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,6 +137,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: -693520152440474342}
+  - {fileID: 4734866396643943147}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -150,3 +174,49 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!114 &8890583256301881274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1689354608959160094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14894d242721d0342a705d3575bfec8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefabPath: Prefabs/BulletPrefabs/Bullet
+--- !u!114 &4734866396643943147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1689354608959160094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 4
+    SynchronizeType: 1
+    Name: animTest
+  m_SynchronizeLayers:
+  - SynchronizeType: 0
+    LayerIndex: 0
+--- !u!114 &8731381113947539128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1689354608959160094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8117b1b0d9182394bbe2925a48302343, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
