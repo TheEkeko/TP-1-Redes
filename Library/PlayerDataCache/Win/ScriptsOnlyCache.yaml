@@ -1,6 +1,8 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - BulletTest
+    - ClassManager
     - Instantiator
     - NetManager
     - PlayerAnimScript
@@ -70,17 +72,17 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9676}
     - Class: 114
-      Script: {instanceID: 9868}
+      Script: {instanceID: 9870}
     - Class: 114
-      Script: {instanceID: 10368}
+      Script: {instanceID: 10370}
     - Class: 114
-      Script: {instanceID: 11342}
+      Script: {instanceID: 10722}
     - Class: 114
-      Script: {instanceID: 11396}
+      Script: {instanceID: 11348}
     - Class: 114
-      Script: {instanceID: 11768}
+      Script: {instanceID: 11402}
     - Class: 114
-      Script: {instanceID: 17620}
+      Script: {instanceID: 11774}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -135,59 +137,63 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9676}
     - Class: 114
-      Script: {instanceID: 9812}
+      Script: {instanceID: 9758}
     - Class: 114
-      Script: {instanceID: 9832}
+      Script: {instanceID: 9814}
     - Class: 114
-      Script: {instanceID: 9868}
+      Script: {instanceID: 9834}
     - Class: 114
-      Script: {instanceID: 9912}
+      Script: {instanceID: 9870}
     - Class: 114
-      Script: {instanceID: 10116}
+      Script: {instanceID: 9914}
     - Class: 114
-      Script: {instanceID: 10278}
+      Script: {instanceID: 10118}
     - Class: 114
-      Script: {instanceID: 10290}
+      Script: {instanceID: 10280}
     - Class: 114
-      Script: {instanceID: 10368}
+      Script: {instanceID: 10292}
     - Class: 114
-      Script: {instanceID: 10432}
+      Script: {instanceID: 10370}
     - Class: 114
-      Script: {instanceID: 10618}
+      Script: {instanceID: 10434}
     - Class: 114
-      Script: {instanceID: 10680}
+      Script: {instanceID: 10580}
     - Class: 114
-      Script: {instanceID: 10800}
+      Script: {instanceID: 10622}
     - Class: 114
-      Script: {instanceID: 10852}
+      Script: {instanceID: 10684}
     - Class: 114
-      Script: {instanceID: 10924}
+      Script: {instanceID: 10806}
     - Class: 114
-      Script: {instanceID: 11002}
+      Script: {instanceID: 10858}
     - Class: 114
-      Script: {instanceID: 11010}
+      Script: {instanceID: 10930}
     - Class: 114
-      Script: {instanceID: 11024}
+      Script: {instanceID: 11008}
     - Class: 114
-      Script: {instanceID: 11208}
+      Script: {instanceID: 11016}
     - Class: 114
-      Script: {instanceID: 11216}
+      Script: {instanceID: 11030}
+    - Class: 114
+      Script: {instanceID: 11214}
     - Class: 114
       Script: {instanceID: 11222}
     - Class: 114
-      Script: {instanceID: 11342}
+      Script: {instanceID: 11228}
     - Class: 114
-      Script: {instanceID: 11440}
+      Script: {instanceID: 11348}
     - Class: 114
-      Script: {instanceID: 11690}
+      Script: {instanceID: 11446}
     - Class: 114
-      Script: {instanceID: 11768}
+      Script: {instanceID: 11696}
     - Class: 114
-      Script: {instanceID: 11800}
+      Script: {instanceID: 11774}
     - Class: 114
-      Script: {instanceID: 11808}
+      Script: {instanceID: 11806}
     - Class: 114
-      Script: {instanceID: 15770}
+      Script: {instanceID: 11814}
+    - Class: 114
+      Script: {instanceID: 14880}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -291,6 +297,12 @@ ScriptsOnlyBuild:
     assemblyName: PhotonUnityNetworking.Utilities.dll
     namespaceName: Photon.Pun.UtilityScripts
     className: GraphicToggleIsOnTransition
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PlayerAnimScript
   - hash:
       serializedVersion: 2
       Hash: c656dcc13ae391b68d594cc8f9c590b0
@@ -605,7 +617,7 @@ ScriptsOnlyBuild:
     className: PhotonRigidbody2DView
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: fe7997596f3b69b011e663b486510cfe
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerScript
@@ -761,6 +773,12 @@ ScriptsOnlyBuild:
     className: ScrollRect
   - hash:
       serializedVersion: 2
+      Hash: fa77a466b00a6c269e866816223be363
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: BulletTest
+  - hash:
+      serializedVersion: 2
       Hash: c656dcc13ae391b68d594cc8f9c590b0
     assemblyName: PhotonUnityNetworking.Demos.dll
     namespaceName: Photon.Pun.Demo.Cockpit
@@ -867,6 +885,12 @@ ScriptsOnlyBuild:
     assemblyName: PhotonUnityNetworking.Demos.dll
     namespaceName: Photon.Pun.Demo.Cockpit
     className: CountOfPlayersInRoomProperty
+  - hash:
+      serializedVersion: 2
+      Hash: 5748eea100b49d7f2c4c246bfd934363
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PlayerList
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -1535,19 +1559,13 @@ ScriptsOnlyBuild:
     className: PlayableTrack
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: e8e6a34f3826323d5ca97e60298ce48a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: PlayerAnimScript
-  - hash:
-      serializedVersion: 2
-      Hash: d4e0b9e9f4f6b558ad8f237a197b2c08
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: PlayerList
+    className: ClassManager
   platform: 5
   scenePathNames:
   - Assets/Scenes/Menu.unity
   - Assets/Scenes/GameScene.unity
-  playerPath: C:/Users/ramag/Desktop/UADE/Redes/TP1/TP-1-Redes-Build/TP Redes 1-Garbagna
-    y Rusconi.exe
+  playerPath: C:/Users/Rodrigo/Documents/TP Redes 1-Garbagna y Rusconi/BUILD/TP Redes
+    1-Garbagna y Rusconi.exe

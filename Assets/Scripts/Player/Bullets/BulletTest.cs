@@ -1,16 +1,15 @@
 ﻿using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class BulletTest : MonoBehaviourPun //El nombre es bullet test porque pareciera que ya hay una clase llamada Bullet
 {
-    /*
-    A ver, aca faltan que la bala y el jugador no colisionen. Pero es una boludes de cambiar las layers y las pyshics de Unity, pero al menos
-    tenemos el modelo de como debe funcar la bala.
-    */
 
     [SerializeField] float speed;
+    [Tooltip("0 para fuego, 1 para hielo, 2 para confusion")]
+    [SerializeField] int bulletType;
     Rigidbody _rb;
     private void Awake()
     {
@@ -38,7 +37,22 @@ public class BulletTest : MonoBehaviourPun //El nombre es bullet test porque par
     {
         if (photonView.IsMine)
         {
-            Debug.Log("ded :(");
+            UnityEngine.Debug.Log("Bullet collision");
         }
+
+        /*
+        switch (bulletType)
+        {
+            case 0:
+                //Agregar comportamiento correspondiente a la bala de fuego
+                break;
+            case 1:
+                //Agregar comportamiento correspondiente a la bala de hielo
+                break;
+            case 2:
+                //Agregar comportamiento correspondiente a la bala de confusion
+                break;
+        }
+        */
     }
 }

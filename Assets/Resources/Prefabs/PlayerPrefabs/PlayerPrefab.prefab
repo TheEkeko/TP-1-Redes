@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 8890583256301881274}
   - component: {fileID: 4734866396643943147}
   - component: {fileID: 8731381113947539128}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlayerPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -215,7 +215,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1689354608959160094}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8117b1b0d9182394bbe2925a48302343, type: 3}
   m_Name: 

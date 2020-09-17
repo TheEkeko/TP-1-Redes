@@ -11,8 +11,24 @@ public class Instantiator : MonoBehaviour
         /* Instancio el prefab PlayerPrefab, esto supongo que o en la clase 5 explicara otro metodo,
         o tendremos que adaptarlo para que dependiendo de la clase del jugador tome el prefab correspondiente
         
-         Para que esto funcione los prefabs tienen que tener el componente PhotonView */
+         Para que esto funcione los prefabs tienen que tener el componente PhotonView 
 
-        PhotonNetwork.Instantiate("Prefabs/PlayerPrefabs/PlayerPrefab", Vector3.zero, Quaternion.identity);
+        PhotonNetwork.Instantiate("Prefabs/PlayerPrefabs/PlayerPrefab", Vector3.zero, Quaternion.identity); */
+
+        int playerClass = ClassManager.Instance.PlayerClass;
+        Debug.Log(playerClass);
+        switch(playerClass)
+        {
+            case 0:
+                PhotonNetwork.Instantiate("Prefabs/PlayerPrefabs/FireClassPrefab", Vector3.zero, Quaternion.identity);
+                break;
+            case 1:
+                PhotonNetwork.Instantiate("Prefabs/PlayerPrefabs/IceClassPrefab", Vector3.zero, Quaternion.identity);
+                break;
+            case 2:
+                PhotonNetwork.Instantiate("Prefabs/PlayerPrefabs/ConfusionClassPrefab", Vector3.zero, Quaternion.identity);
+                break;
+        }
     }
+
 }
