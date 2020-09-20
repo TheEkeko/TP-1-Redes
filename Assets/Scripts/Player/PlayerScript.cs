@@ -11,6 +11,9 @@ public class PlayerScript : MonoBehaviourPun
     [SerializeField] string bulletPrefabPath;
     [SerializeField] CharacterController cc;
     [SerializeField] Vector3 movement;
+    
+    GameManager _gameManager;
+
     private void Awake()
     {
         Debug.Log("Controles: A - Cambia de animacion | S - Dispara | Espacio - Cambia a color rojo");
@@ -18,6 +21,12 @@ public class PlayerScript : MonoBehaviourPun
         //_mat = GetComponent<Renderer>().material;
         cc = GetComponent<CharacterController>();
 
+        if (PhotonNetwork.IsMasterClient)
+        {
+            _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+            _gameManager.AddPlayerToList(gameObject);
+        }
+        
     }
 
     // Update is called once per frame
@@ -76,5 +85,11 @@ public class PlayerScript : MonoBehaviourPun
         var dir = transform.forward;
         dir.y = 0.5f;
         bullet.Shoot(dir);
+    }
+
+    [PunRPC] //Esto esta para que cuando se conecte un usuario a la sala, el MC lo agarre y lo guarde en una lista (Esto lo usan los enemigos)
+    void AddPlayerToList()
+    {
+        _gameManager.AddPlayerToList(gameObject);
     }
 }

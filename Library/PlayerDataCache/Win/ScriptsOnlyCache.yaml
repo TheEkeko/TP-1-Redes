@@ -3,6 +3,7 @@ ScriptsOnlyBuild:
     Assembly-CSharp.dll:
     - BulletTest
     - ClassManager
+    - GameManager
     - Instantiator
     - NetManager
     - PlayerAnimScript
@@ -18,8 +19,6 @@ ScriptsOnlyBuild:
     - Photon.Pun.Demo.PunBasics.PlayerUI
     - Photon.Pun.Demo.SlotRacer.PlayerControl
     - Photon.Pun.Demo.SlotRacer.Utils.SplineWalker
-    PhotonUnityNetworking.Editor.dll:
-    - Photon.Pun.PunSceneSettings
     PhotonUnityNetworking.dll:
     - Photon.Pun.PhotonAnimatorView
     - Photon.Pun.PhotonRigidbodyView
@@ -30,10 +29,8 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -59,11 +56,21 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 21
       Script: {instanceID: 0}
+    - Class: 23
+      Script: {instanceID: 0}
     - Class: 28
+      Script: {instanceID: 0}
+    - Class: 33
+      Script: {instanceID: 0}
+    - Class: 43
       Script: {instanceID: 0}
     - Class: 48
       Script: {instanceID: 0}
+    - Class: 65
+      Script: {instanceID: 0}
     - Class: 81
+      Script: {instanceID: 0}
+    - Class: 89
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
@@ -78,11 +85,15 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 10722}
     - Class: 114
-      Script: {instanceID: 11348}
+      Script: {instanceID: 11350}
     - Class: 114
-      Script: {instanceID: 11402}
+      Script: {instanceID: 11404}
     - Class: 114
-      Script: {instanceID: 11774}
+      Script: {instanceID: 11700}
+    - Class: 114
+      Script: {instanceID: 11778}
+    - Class: 114
+      Script: {instanceID: 14656}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -94,6 +105,8 @@ ScriptsOnlyBuild:
     - Class: 223
       Script: {instanceID: 0}
     - Class: 224
+      Script: {instanceID: 0}
+    - Class: 258
       Script: {instanceID: 0}
     Assets/Scenes/Menu.unity:
     - Class: 1
@@ -165,35 +178,35 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 10806}
     - Class: 114
-      Script: {instanceID: 10858}
+      Script: {instanceID: 10860}
     - Class: 114
-      Script: {instanceID: 10930}
+      Script: {instanceID: 10932}
     - Class: 114
-      Script: {instanceID: 11008}
+      Script: {instanceID: 11010}
     - Class: 114
-      Script: {instanceID: 11016}
+      Script: {instanceID: 11018}
     - Class: 114
-      Script: {instanceID: 11030}
+      Script: {instanceID: 11032}
     - Class: 114
-      Script: {instanceID: 11214}
+      Script: {instanceID: 11216}
     - Class: 114
-      Script: {instanceID: 11222}
+      Script: {instanceID: 11224}
     - Class: 114
-      Script: {instanceID: 11228}
+      Script: {instanceID: 11230}
     - Class: 114
-      Script: {instanceID: 11348}
+      Script: {instanceID: 11350}
     - Class: 114
-      Script: {instanceID: 11446}
+      Script: {instanceID: 11428}
     - Class: 114
-      Script: {instanceID: 11696}
+      Script: {instanceID: 11450}
     - Class: 114
-      Script: {instanceID: 11774}
+      Script: {instanceID: 11700}
     - Class: 114
-      Script: {instanceID: 11806}
+      Script: {instanceID: 11778}
     - Class: 114
-      Script: {instanceID: 11814}
+      Script: {instanceID: 11810}
     - Class: 114
-      Script: {instanceID: 14880}
+      Script: {instanceID: 11818}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -617,7 +630,7 @@ ScriptsOnlyBuild:
     className: PhotonRigidbody2DView
   - hash:
       serializedVersion: 2
-      Hash: fe7997596f3b69b011e663b486510cfe
+      Hash: b7bf828683b66d020ef993dfc9dd119d
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerScript
@@ -953,6 +966,12 @@ ScriptsOnlyBuild:
     className: IsConnectedProperty
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: EnemyAI
+  - hash:
+      serializedVersion: 2
       Hash: 23d98efc145b1081fdecd8f309db521f
     assemblyName: PhotonUnityNetworking.dll
     namespaceName: Photon.Pun
@@ -1247,10 +1266,16 @@ ScriptsOnlyBuild:
     className: ProceduralController
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: 2163da67692a57374f3057db10f9ff4c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Instantiator
+  - hash:
+      serializedVersion: 2
+      Hash: e8e6a34f3826323d5ca97e60298ce48a
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ClassManager
   - hash:
       serializedVersion: 2
       Hash: c5fd97cc10b89deaf7c60af66a6b0d5a
@@ -1559,13 +1584,13 @@ ScriptsOnlyBuild:
     className: PlayableTrack
   - hash:
       serializedVersion: 2
-      Hash: e8e6a34f3826323d5ca97e60298ce48a
+      Hash: 9bc4973475ea814ac78812526d960de8
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: ClassManager
+    className: GameManager
   platform: 5
   scenePathNames:
   - Assets/Scenes/Menu.unity
   - Assets/Scenes/GameScene.unity
-  playerPath: C:/Users/Rodrigo/Documents/TP Redes 1-Garbagna y Rusconi/BUILD/TP Redes
-    1-Garbagna y Rusconi.exe
+  playerPath: C:/Users/ramag/Desktop/UADE/Redes/TP1/TP-1-Redes-Build/TP Redes 1-Garbagna
+    y Rusconi.exe

@@ -16,8 +16,6 @@ public class NetManager : MonoBehaviourPunCallbacks
 
     public override void OnConnectedToMaster()
     {
-        Debug.Log("Connected");
-
         //Creo las options de la room para que sea de 4 jugadores
         RoomOptions rO = new RoomOptions();
         rO.MaxPlayers = 4;
@@ -38,8 +36,6 @@ public class NetManager : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        Debug.Log("Joined room: " + PhotonNetwork.CurrentRoom.Name);
-
         //Cargo la scene del juego, a esto hay que agregarle cosas de la clase 5
         PhotonNetwork.LoadLevel("GameScene");
     }

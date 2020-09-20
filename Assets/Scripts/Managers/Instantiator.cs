@@ -4,8 +4,10 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 
-public class Instantiator : MonoBehaviour
+public class Instantiator : MonoBehaviourPunCallbacks
 {
+    [SerializeField] GameManager _gameManager;
+
     void Start()
     {
         /* Instancio el prefab PlayerPrefab, esto supongo que o en la clase 5 explicara otro metodo,
@@ -14,21 +16,21 @@ public class Instantiator : MonoBehaviour
          Para que esto funcione los prefabs tienen que tener el componente PhotonView 
 
         PhotonNetwork.Instantiate("Prefabs/PlayerPrefabs/PlayerPrefab", Vector3.zero, Quaternion.identity); */
-
-        int playerClass = ClassManager.Instance.PlayerClass;
-        Debug.Log(playerClass);
-        switch(playerClass)
+        string playerClass = "";
+        int playerClassIndex = ClassManager.Instance.PlayerClass;
+        switch(playerClassIndex)
         {
             case 0:
-                PhotonNetwork.Instantiate("Prefabs/PlayerPrefabs/FireClassPrefab", Vector3.zero, Quaternion.identity);
+                playerClass = "Prefabs/PlayerPrefabs/FireClassPrefab";
                 break;
             case 1:
-                PhotonNetwork.Instantiate("Prefabs/PlayerPrefabs/IceClassPrefab", Vector3.zero, Quaternion.identity);
+                playerClass = "Prefabs/PlayerPrefabs/IceClassPrefab";
                 break;
             case 2:
-                PhotonNetwork.Instantiate("Prefabs/PlayerPrefabs/ConfusionClassPrefab", Vector3.zero, Quaternion.identity);
+                playerClass = "Prefabs/PlayerPrefabs/ConfusionClassPrefab";
                 break;
         }
-    }
 
+        PhotonNetwork.Instantiate(playerClass, Vector3.zero, Quaternion.identity);
+    }
 }
