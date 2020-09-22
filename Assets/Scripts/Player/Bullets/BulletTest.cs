@@ -54,5 +54,6 @@ public class BulletTest : MonoBehaviourPun //El nombre es bullet test porque par
                 break;
         }
         */
+        Destroy(this.gameObject);
     }
 }

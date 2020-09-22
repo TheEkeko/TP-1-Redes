@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 2066585128761229855}
   - component: {fileID: 2066585128761229854}
   - component: {fileID: 4952208634039220285}
-  - component: {fileID: 3734555840353796967}
   - component: {fileID: 7213192367577238440}
   - component: {fileID: 9060160744543422489}
   - component: {fileID: 8123796050112559801}
@@ -118,24 +117,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!143 &3734555840353796967
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2066585128761229853}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 1
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7213192367577238440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,8 +188,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 7
   bulletPrefabPath: Prefabs/BulletPrefabs/Bullet
-  cc: {fileID: 0}
+  rb: {fileID: 0}
   movement: {x: 0, y: 0, z: 0}
+  mousePosition: {x: 0, y: 0, z: 0}
 --- !u!114 &5362002442561232872
 MonoBehaviour:
   m_ObjectHideFlags: 0

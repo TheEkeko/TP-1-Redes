@@ -11,7 +11,9 @@ public class PlayerScript : MonoBehaviourPun
     [SerializeField] string bulletPrefabPath;
     [SerializeField] CharacterController cc;
     [SerializeField] Vector3 movement;
-    
+
+    [SerializeField] Vector3 mousePosition;
+
     GameManager _gameManager;
 
     private void Awake()
@@ -37,9 +39,14 @@ public class PlayerScript : MonoBehaviourPun
 
         var h = Input.GetAxis("Horizontal");
         var v = Input.GetAxis("Vertical");
-        //transform.position += new Vector3(h, 0, v) * Time.deltaTime * speed;
+        
         movement = new Vector3(h, 0, v)*Time.deltaTime*speed;
         cc.Move(movement);
+
+        var dir = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
+        var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.down);
+
 
 
         //ejemplo de modificacion hacia MI objeto, pero que sea visible en el resto (sirve como ejemplo de cosas como para sacar vida y demas)
@@ -69,8 +76,9 @@ public class PlayerScript : MonoBehaviourPun
         Hybrid: Las cosas importantes las hace el Server, lo demas lo hace cada cliente -- Me parece esta la mejor opcion
         */
 
-        //if (Input.GetKeyDown(KeyCode.S)) photonView.RPC("Shoot", RpcTarget.MasterClient);
+        if (Input.GetKeyDown(KeyCode.Mouse0)) photonView.RPC("Shoot", RpcTarget.MasterClient);
     }
+
 
     [PunRPC] //Todas estas funciones que deban ser ejecutadas en otros clientes, requieren esta propiedad, sino, nos tira un error de que no encuentra la funcion
     void ChangeColor()

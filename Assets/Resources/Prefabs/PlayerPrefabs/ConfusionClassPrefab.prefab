@@ -209,6 +209,7 @@ MonoBehaviour:
   bulletPrefabPath: Prefabs/BulletPrefabs/Bullet
   cc: {fileID: 0}
   movement: {x: 0, y: 0, z: 0}
+  mouseOnScreen: {x: 0, y: 0, z: 0}
 --- !u!114 &6623717121405142449
 MonoBehaviour:
   m_ObjectHideFlags: 0
