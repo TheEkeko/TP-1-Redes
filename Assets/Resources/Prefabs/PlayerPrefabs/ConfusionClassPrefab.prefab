@@ -12,13 +12,10 @@ GameObject:
   - component: {fileID: 948147731225794625}
   - component: {fileID: 948147731225794630}
   - component: {fileID: 948147731225794631}
-  - component: {fileID: 6141859776493183588}
   - component: {fileID: 4021947152579061456}
   - component: {fileID: 8475751763396612593}
   - component: {fileID: 7798452654175572544}
   - component: {fileID: 7005355922554577120}
-  - component: {fileID: 6623717121405142449}
-  - component: {fileID: 7166824162735317474}
   m_Layer: 8
   m_Name: ConfusionClassPrefab
   m_TagString: Untagged
@@ -99,25 +96,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!95 &6141859776493183588
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 948147731225794628}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ab3f27420e2d6ef45aa667495c3e239e, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!143 &4021947152579061456
 CharacterController:
   m_ObjectHideFlags: 0
@@ -156,7 +134,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 7798452654175572544}
-  - {fileID: 6623717121405142449}
+  - {fileID: 0}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -206,40 +184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 7
-  bulletPrefabPath: Prefabs/BulletPrefabs/Bullet
+  bulletPrefabPath: Prefabs/BulletPrefabs/ConfusionBullet
   cc: {fileID: 0}
   movement: {x: 0, y: 0, z: 0}
-  mouseOnScreen: {x: 0, y: 0, z: 0}
---- !u!114 &6623717121405142449
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 948147731225794628}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShowLayerWeightsInspector: 1
-  ShowParameterInspector: 1
-  m_SynchronizeParameters:
-  - Type: 4
-    SynchronizeType: 1
-    Name: animTest
-  m_SynchronizeLayers:
-  - SynchronizeType: 0
-    LayerIndex: 0
---- !u!114 &7166824162735317474
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 948147731225794628}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8117b1b0d9182394bbe2925a48302343, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  mousePosition: {x: 0, y: 0, z: 0}

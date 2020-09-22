@@ -10,6 +10,7 @@ public class BulletTest : MonoBehaviourPun //El nombre es bullet test porque par
     [SerializeField] float speed;
     [Tooltip("0 para fuego, 1 para hielo, 2 para confusion")]
     [SerializeField] int bulletType;
+    [SerializeField] GameObject impactParticle;
     Rigidbody _rb;
     private void Awake()
     {
@@ -29,11 +30,11 @@ public class BulletTest : MonoBehaviourPun //El nombre es bullet test porque par
 
     IEnumerator WaitToDestroy()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(2f);
         PhotonNetwork.Destroy(gameObject);
     }
-
-    private void OnCollisionEnter(Collision collision)
+    
+    private void OnCollisionEnter(Collision collision) //PADRE ESCUCHE, aca no tendriamos que hacer algun tipo de checkeo que la bala solo tome el impacto si isMine o si es el masterclient?
     {
         if (photonView.IsMine)
         {
@@ -54,6 +55,14 @@ public class BulletTest : MonoBehaviourPun //El nombre es bullet test porque par
                 break;
         }
         */
-        Destroy(this.gameObject);
+        Quaternion particleRot = new Quaternion(-90, 0, 0,0);
+        Instantiate(impactParticle, transform.position, particleRot);
+        PhotonNetwork.Destroy(gameObject);
     }
+
+    /*[PunRPC]
+    void SpawnParticles()
+    {
+        PhotonNetwork.Instantiate(particlePrefabPath, transform.position, Quaternion.identity);
+    }*/
 }

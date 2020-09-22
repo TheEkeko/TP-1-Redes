@@ -29,6 +29,11 @@ public class Health
         if (_hp == 0) _onEventDeath.Invoke();
     }
 
+    public void MaxLife()
+    {
+        _hp = _maxHP;
+    }
+
     //un getter de la var _hp
     public float HP
     {
