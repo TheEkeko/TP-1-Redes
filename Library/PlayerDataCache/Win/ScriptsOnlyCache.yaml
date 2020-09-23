@@ -1,14 +1,17 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - AutoDestroy
     - BulletTest
     - ClassManager
+    - EnemyAI
     - GameManager
     - Instantiator
     - NetManager
     - PlayerAnimScript
     - PlayerList
     - PlayerScript
+    - SkeletonAnim
     PhotonUnityNetworking.Demos.dll:
     - Photon.Pun.Demo.Asteroids.Asteroid
     - Photon.Pun.Demo.Asteroids.Bullet
@@ -19,8 +22,14 @@ ScriptsOnlyBuild:
     - Photon.Pun.Demo.PunBasics.PlayerUI
     - Photon.Pun.Demo.SlotRacer.PlayerControl
     - Photon.Pun.Demo.SlotRacer.Utils.SplineWalker
+    PhotonUnityNetworking.Editor.dll:
+    - Photon.Pun.PhotonAnimatorViewEditor
+    - Photon.Pun.PhotonRigidbodyViewEditor
+    - Photon.Pun.PhotonViewInspector
+    - Photon.Pun.PunSceneSettings
     PhotonUnityNetworking.dll:
     - Photon.Pun.PhotonAnimatorView
+    - Photon.Pun.PhotonHandler
     - Photon.Pun.PhotonRigidbodyView
     - Photon.Pun.PhotonTransformView
     - Photon.Pun.PhotonTransformViewClassic
@@ -29,8 +38,10 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -81,19 +92,19 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9870}
     - Class: 114
-      Script: {instanceID: 10370}
+      Script: {instanceID: 10126}
     - Class: 114
-      Script: {instanceID: 10722}
+      Script: {instanceID: 10374}
     - Class: 114
-      Script: {instanceID: 11350}
+      Script: {instanceID: 10726}
     - Class: 114
-      Script: {instanceID: 11404}
+      Script: {instanceID: 11356}
     - Class: 114
-      Script: {instanceID: 11700}
+      Script: {instanceID: 11410}
     - Class: 114
-      Script: {instanceID: 11778}
+      Script: {instanceID: 11706}
     - Class: 114
-      Script: {instanceID: 14656}
+      Script: {instanceID: 11784}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -143,6 +154,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 95
       Script: {instanceID: 0}
+    - Class: 96
+      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 108
@@ -160,53 +173,61 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9914}
     - Class: 114
-      Script: {instanceID: 10118}
+      Script: {instanceID: 10098}
     - Class: 114
-      Script: {instanceID: 10280}
+      Script: {instanceID: 10120}
     - Class: 114
-      Script: {instanceID: 10292}
+      Script: {instanceID: 10284}
     - Class: 114
-      Script: {instanceID: 10370}
+      Script: {instanceID: 10296}
     - Class: 114
-      Script: {instanceID: 10434}
+      Script: {instanceID: 10374}
     - Class: 114
-      Script: {instanceID: 10580}
+      Script: {instanceID: 10438}
     - Class: 114
-      Script: {instanceID: 10622}
+      Script: {instanceID: 10584}
     - Class: 114
-      Script: {instanceID: 10684}
+      Script: {instanceID: 10626}
     - Class: 114
-      Script: {instanceID: 10806}
+      Script: {instanceID: 10688}
     - Class: 114
-      Script: {instanceID: 10860}
+      Script: {instanceID: 10810}
     - Class: 114
-      Script: {instanceID: 10932}
+      Script: {instanceID: 10862}
     - Class: 114
-      Script: {instanceID: 11010}
+      Script: {instanceID: 10864}
     - Class: 114
-      Script: {instanceID: 11018}
+      Script: {instanceID: 10936}
     - Class: 114
-      Script: {instanceID: 11032}
+      Script: {instanceID: 10996}
     - Class: 114
-      Script: {instanceID: 11216}
+      Script: {instanceID: 11016}
     - Class: 114
-      Script: {instanceID: 11224}
+      Script: {instanceID: 11024}
+    - Class: 114
+      Script: {instanceID: 11038}
+    - Class: 114
+      Script: {instanceID: 11222}
     - Class: 114
       Script: {instanceID: 11230}
     - Class: 114
-      Script: {instanceID: 11350}
+      Script: {instanceID: 11236}
     - Class: 114
-      Script: {instanceID: 11428}
+      Script: {instanceID: 11356}
     - Class: 114
-      Script: {instanceID: 11450}
+      Script: {instanceID: 11434}
     - Class: 114
-      Script: {instanceID: 11700}
+      Script: {instanceID: 11456}
     - Class: 114
-      Script: {instanceID: 11778}
+      Script: {instanceID: 11706}
     - Class: 114
-      Script: {instanceID: 11810}
+      Script: {instanceID: 11784}
     - Class: 114
-      Script: {instanceID: 11818}
+      Script: {instanceID: 11816}
+    - Class: 114
+      Script: {instanceID: 11824}
+    - Class: 114
+      Script: {instanceID: 29260}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -570,6 +591,12 @@ ScriptsOnlyBuild:
     className: Block
   - hash:
       serializedVersion: 2
+      Hash: 76a7ffc029e68751559c8eb7197a19e0
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: GameManager
+  - hash:
+      serializedVersion: 2
       Hash: cf9f5cf2c3145a37ac07f00e50e460f9
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -630,7 +657,7 @@ ScriptsOnlyBuild:
     className: PhotonRigidbody2DView
   - hash:
       serializedVersion: 2
-      Hash: b7bf828683b66d020ef993dfc9dd119d
+      Hash: 4a0e244a1620071cd4c09fb9d837a0a5
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerScript
@@ -786,7 +813,7 @@ ScriptsOnlyBuild:
     className: ScrollRect
   - hash:
       serializedVersion: 2
-      Hash: fa77a466b00a6c269e866816223be363
+      Hash: f3c47bec21fb23b779a9faa4629b973a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: BulletTest
@@ -966,7 +993,7 @@ ScriptsOnlyBuild:
     className: IsConnectedProperty
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: d733575f3b73d26855c6ce2d7af29c5f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: EnemyAI
@@ -1030,6 +1057,12 @@ ScriptsOnlyBuild:
     assemblyName: PhotonUnityNetworking.Demos.dll
     namespaceName: Photon.Pun.Demo.PunBasics
     className: PlayerUI
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: AutoDestroy
   - hash:
       serializedVersion: 2
       Hash: 3dbccc5793489caad80e37a33f1d2d30
@@ -1584,10 +1617,10 @@ ScriptsOnlyBuild:
     className: PlayableTrack
   - hash:
       serializedVersion: 2
-      Hash: 9bc4973475ea814ac78812526d960de8
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: GameManager
+    className: SkeletonAnim
   platform: 5
   scenePathNames:
   - Assets/Scenes/Menu.unity

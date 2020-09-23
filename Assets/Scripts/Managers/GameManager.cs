@@ -11,8 +11,10 @@ public class GameManager : MonoBehaviourPunCallbacks
     const int _maxWaves = 4;
 
     //Variables
-    [SerializeField] List<GameObject> _playerList;
+    [SerializeField] List<PlayerScript> _playerList;
     [SerializeField] Transform[] spawnPoints;
+    [SerializeField] GameObject loseText;
+    [SerializeField] GameObject winText;
     bool _gameStart;
     float _timer;
     List<GameObject> _enemyList;
@@ -33,7 +35,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         _gameStart = false;
         _timer = 10f;
         _enemyList = new List<GameObject>();
-        _playerList = new List<GameObject>();
+        _playerList = new List<PlayerScript>();
         _actualWave = 0;
     }
 
@@ -79,32 +81,27 @@ public class GameManager : MonoBehaviourPunCallbacks
         else
         {
             //inicializa las waves
-            if (_enemyList.Count < _minEnemiesToStartWave)
+            if (_enemyList.Count < _minEnemiesToStartWave && _actualWave < _maxWaves)
             {
-                var enemy = PhotonNetwork.Instantiate(_slimePrefab, spawnPoints[0].position, Quaternion.identity);
-                _enemyList.Add(enemy);
-                enemy = PhotonNetwork.Instantiate(_gremlingPrefab, spawnPoints[1].position, Quaternion.identity);
-                _enemyList.Add(enemy);
-                enemy = PhotonNetwork.Instantiate(_ghostPrefab, spawnPoints[2].position, Quaternion.identity);
-                _enemyList.Add(enemy);
-                enemy = PhotonNetwork.Instantiate(_skeletonPrefab, spawnPoints[3].position, Quaternion.identity);
-                _enemyList.Add(enemy);
+                SpawnWave();
                 _actualWave++;
             }
 
+            if (_actualWave == _maxWaves && _enemyList.Count == 0) photonView.RPC("WinGame", RpcTarget.All);
+
             //termino el juego si mataron a todos los enemigos en todas las rondas
-            if (_actualWave == _maxWaves && _enemyList.Count == 0) EndGame();
+            //if (_actualWave == _maxWaves && _enemyList.Count == 0) EndGame();
         }
     }
 
     //Funcion que agrega al jugador en la lista de jugadores
-    public void AddPlayerToList(GameObject player)
+    public void AddPlayerToList(PlayerScript player)
     {
         _playerList.Add(player);
     }
 
     //Devuelve la lista de jugadores
-    public List<GameObject> GetPlayerList()
+    public List<PlayerScript> GetPlayerList()
     {
         return _playerList;
     }
@@ -115,8 +112,66 @@ public class GameManager : MonoBehaviourPunCallbacks
         get { return _enemyList; }
     }
 
+    //Funcion que spawnea la wave
+    void SpawnWave()
+    {
+        //Genero un array de todos los bichos
+        string[] enemyType = new string[4];
+        enemyType[0] = _slimePrefab;
+        enemyType[1] = _gremlingPrefab;
+        enemyType[2] = _ghostPrefab;
+        enemyType[3] = _skeletonPrefab;
+
+        var selectedEnemy = enemyType[Random.Range(0, enemyType.Length)];
+        var enemy = PhotonNetwork.Instantiate(selectedEnemy, spawnPoints[0].position, Quaternion.identity);
+        _enemyList.Add(enemy);
+        selectedEnemy = enemyType[Random.Range(0, enemyType.Length)];
+        enemy = PhotonNetwork.Instantiate(selectedEnemy, spawnPoints[1].position, Quaternion.identity);
+        _enemyList.Add(enemy);
+        selectedEnemy = enemyType[Random.Range(0, enemyType.Length)];
+        enemy = PhotonNetwork.Instantiate(selectedEnemy, spawnPoints[2].position, Quaternion.identity);
+        _enemyList.Add(enemy);
+        selectedEnemy = enemyType[Random.Range(0, enemyType.Length)];
+        enemy = PhotonNetwork.Instantiate(selectedEnemy, spawnPoints[3].position, Quaternion.identity);
+        _enemyList.Add(enemy);
+        selectedEnemy = enemyType[Random.Range(0, enemyType.Length)];
+        enemy = PhotonNetwork.Instantiate(selectedEnemy, spawnPoints[4].position, Quaternion.identity);
+        _enemyList.Add(enemy);
+        selectedEnemy = enemyType[Random.Range(0, enemyType.Length)];
+        enemy = PhotonNetwork.Instantiate(selectedEnemy, spawnPoints[5].position, Quaternion.identity);
+        _enemyList.Add(enemy);
+        selectedEnemy = enemyType[Random.Range(0, enemyType.Length)];
+        enemy = PhotonNetwork.Instantiate(selectedEnemy, spawnPoints[6].position, Quaternion.identity);
+        _enemyList.Add(enemy);
+        selectedEnemy = enemyType[Random.Range(0, enemyType.Length)];
+        enemy = PhotonNetwork.Instantiate(selectedEnemy, spawnPoints[7].position, Quaternion.identity);
+        _enemyList.Add(enemy);
+    }
+
+    //Funcion que chequea si se terminó el juego
+    public void CheckEndgame()
+    {
+        if (!PhotonNetwork.IsMasterClient) return;
+
+        bool isSomebodyAlive = false;
+
+        foreach (var p in _playerList)
+        {
+            if (!p.IsDead) isSomebodyAlive = true;
+        }
+
+        if (!isSomebodyAlive) photonView.RPC("EndGame", RpcTarget.All);
+    }
+
+    [PunRPC]
     void EndGame()
     {
+        loseText.SetActive(true);
+    }
 
+    [PunRPC]
+    void WinGame()
+    {
+        winText.SetActive(true);
     }
 }

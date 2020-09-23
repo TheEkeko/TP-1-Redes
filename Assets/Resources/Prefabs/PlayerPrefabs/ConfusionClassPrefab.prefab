@@ -134,7 +134,6 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 7798452654175572544}
-  - {fileID: 0}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -188,3 +187,5 @@ MonoBehaviour:
   cc: {fileID: 0}
   movement: {x: 0, y: 0, z: 0}
   mousePosition: {x: 0, y: 0, z: 0}
+  isDead: 0
+  initialhealth: 100

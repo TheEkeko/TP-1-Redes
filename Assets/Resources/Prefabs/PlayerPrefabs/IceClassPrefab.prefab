@@ -169,6 +169,8 @@ MonoBehaviour:
   cc: {fileID: 0}
   movement: {x: 0, y: 0, z: 0}
   mousePosition: {x: 0, y: 0, z: 0}
+  isDead: 0
+  initialhealth: 1e+15
 --- !u!143 &1480559928237437929
 CharacterController:
   m_ObjectHideFlags: 0

@@ -8,11 +8,16 @@ public class EnemyAI : MonoBehaviourPunCallbacks
     //Variables
     [SerializeField] float speed;
     [SerializeField] float initialHealth;
+    [SerializeField] float damage;
+    [SerializeField] SkeletonAnim _skeletonAnim;
     GameManager _gameManager;
-    List<GameObject> _playerList;
+    List<PlayerScript> _playerList;
     Transform _target;
     Rigidbody _rb;
     Health _health;
+    PlayerScript _targetScript;
+    float _attackCooldown;
+    const float _maxAttackCooldown = 5f;
 
     private void Start()
     {
@@ -30,6 +35,9 @@ public class EnemyAI : MonoBehaviourPunCallbacks
 
         //Le doy vida al enemigo
         _health = new Health(initialHealth, Death);
+
+        //Inicializo el timer
+        _attackCooldown = 0;
     }
 
     private void Update()
@@ -37,24 +45,36 @@ public class EnemyAI : MonoBehaviourPunCallbacks
         //Esto solamente lo ejecutará el MasterCliente, porque él es el dueño
         if (!photonView.IsMine) return;
 
-        //calculo la distancia entre la entidad y el target, y si es mayor a 2 se acerca, sino, ataca
-        var dir = _target.position - transform.position;
-
-        if (dir.magnitude > 2)
+        if (!_targetScript.IsDead)
         {
-            _rb.velocity = dir.normalized * speed;
-            dir.y = 0;
-            transform.forward = dir.normalized;
+            //calculo la distancia entre la entidad y el target, y si es mayor a 2 se acerca, sino, ataca
+            var dir = _target.position - transform.position;
+
+            if (dir.magnitude > 2)
+            {
+                _rb.velocity = dir.normalized * speed;
+                dir.y = 0;
+                transform.forward = dir.normalized;
+                if (_skeletonAnim) _skeletonAnim.Move();
+            }
+            else
+            {
+                //Atacar
+                Attack();
+            }
         }
         else
         {
-            //Atacar
+            GetTarget();
         }
+
+        _attackCooldown -= Time.deltaTime;
     }
 
     //Funcion que agarra al player más cercano y lo persigue
     void GetTarget()
     {
+        bool gotTarget = false;
         float previousDist = 10000000000;
         foreach (var player in _playerList)
         {
@@ -62,16 +82,44 @@ public class EnemyAI : MonoBehaviourPunCallbacks
 
             if (dist < previousDist)
             {
+                gotTarget = true;
                 _target = player.transform;
+                _targetScript = player;
                 previousDist = dist;
             }
         }
+
+        if (!gotTarget)
+        {
+            //Game Over
+        }
+    }
+
+    //Funcion que realiza daño
+    public void GetDamaged(float damage)
+    {
+        _health.ChangeLife(damage);
     }
 
     //Funcion que se ejecuta al morir
     void Death()
     {
-        Debug.Log("Me muero");
         _gameManager.EnemyList.Remove(gameObject);
+        PhotonNetwork.Destroy(gameObject);
+    }
+
+    void Attack()
+    {
+        if (_attackCooldown <= 0)
+        {
+            if (_skeletonAnim) _skeletonAnim.Attack();
+
+            _targetScript.ChangeLife(damage);
+            _attackCooldown = _maxAttackCooldown;
+
+            if (_targetScript.IsDead) GetTarget();
+
+            //if (_skeletonAnim) _skeletonAnim.ResetAttack();
+        }
     }
 }

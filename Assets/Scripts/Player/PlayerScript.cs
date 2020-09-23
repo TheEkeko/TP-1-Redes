@@ -6,16 +6,14 @@ using Photon.Realtime;
 
 public class PlayerScript : MonoBehaviourPun
 {
-    [SerializeField] float speed = 7f;
-
+    [SerializeField] float speed;
     [SerializeField] string bulletPrefabPath;
     [SerializeField] CharacterController cc;
     [SerializeField] Vector3 movement;
     [SerializeField] Vector3 mousePosition;
-
     [SerializeField] bool isDead;
-    [SerializeField] Health hp;
-    
+    [SerializeField] float initialhealth;
+    Health hp;
     GameManager _gameManager;
 
     private void Awake()
@@ -26,11 +24,10 @@ public class PlayerScript : MonoBehaviourPun
         if (PhotonNetwork.IsMasterClient)
         {
             _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-            _gameManager.AddPlayerToList(gameObject);
+            _gameManager.AddPlayerToList(this);
         }
 
-        hp = new Health(100, Die);
-        
+        hp = new Health(initialhealth, Die);
     }
 
     void Update()
@@ -64,6 +61,7 @@ public class PlayerScript : MonoBehaviourPun
         isDead = true;
         Vector3 deadPos = new Vector3(500, 500, 500);
         transform.position = deadPos;
+        _gameManager.CheckEndgame();
     }
 
     void Respawn()
@@ -73,7 +71,10 @@ public class PlayerScript : MonoBehaviourPun
         transform.position = new Vector3(0, 0, 0); //Esto lo hago para tener algo, despues habria que hacer un sistema de respawneo por "lugares"
     }
 
-
+    public bool IsDead
+    {
+        get { return isDead; }
+    }
 
     //Todas estas funciones que deban ser ejecutadas en otros clientes, requieren esta propiedad, sino, nos tira un error de que no encuentra la funcion
     [PunRPC]
@@ -83,11 +84,5 @@ public class PlayerScript : MonoBehaviourPun
         var dir = transform.forward;
         dir.y = 0.5f;
         bullet.Shoot(dir);
-    }
-
-    [PunRPC] //Esto esta para que cuando se conecte un usuario a la sala, el MC lo agarre y lo guarde en una lista (Esto lo usan los enemigos)
-    void AddPlayerToList()
-    {
-        _gameManager.AddPlayerToList(gameObject);
     }
 }
