@@ -24,6 +24,8 @@ ScriptsOnlyBuild:
     - Photon.Pun.Demo.PunBasics.PlayerUI
     - Photon.Pun.Demo.SlotRacer.PlayerControl
     - Photon.Pun.Demo.SlotRacer.Utils.SplineWalker
+    PhotonUnityNetworking.Editor.dll:
+    - Photon.Pun.PunSceneSettings
     PhotonUnityNetworking.dll:
     - Photon.Pun.PhotonAnimatorView
     - Photon.Pun.PhotonHandler
@@ -222,11 +224,11 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11788}
     - Class: 114
-      Script: {instanceID: 11820}
+      Script: {instanceID: 11812}
     - Class: 114
-      Script: {instanceID: 11828}
+      Script: {instanceID: 11822}
     - Class: 114
-      Script: {instanceID: 47440}
+      Script: {instanceID: 11830}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1568,6 +1570,12 @@ ScriptsOnlyBuild:
     className: WorldGenerator
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PickUp
+  - hash:
+      serializedVersion: 2
       Hash: 55fd795e51da61232a17e9ce0af59f52
     assemblyName: PhotonUnityNetworking.Demos.dll
     namespaceName: Photon.Pun.Demo.Asteroids
@@ -1626,15 +1634,9 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: PickUp
   platform: 5
   scenePathNames:
   - Assets/Scenes/Menu.unity
   - Assets/Scenes/GameScene.unity
-  playerPath: C:/Users/ramag/Desktop/UADE/Redes/TP1/TP-1-Redes-Build/TP Redes 1-Garbagna
-    y Rusconi.exe
+  playerPath: C:/Users/Rodrigo/Documents/TP Redes 1-Garbagna y Rusconi/BUILD/TP Redes
+    1-Garbagna y Rusconi.exe

@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class AutoDestroy : MonoBehaviour
 {
+    [SerializeField] float time;
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("AD", 3);
+        if (time == 0)
+            Invoke("AD", 3);
+        else
+            Invoke("AD", time);
     }
 
     void AD()
