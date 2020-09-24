@@ -9,6 +9,7 @@ ScriptsOnlyBuild:
     - GameManager
     - Instantiator
     - NetManager
+    - PickUp
     - PlayerAnimScript
     - PlayerList
     - PlayerScript
@@ -88,19 +89,19 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 10128}
     - Class: 114
-      Script: {instanceID: 10376}
+      Script: {instanceID: 10296}
     - Class: 114
-      Script: {instanceID: 10728}
+      Script: {instanceID: 10378}
     - Class: 114
-      Script: {instanceID: 11358}
+      Script: {instanceID: 10730}
     - Class: 114
-      Script: {instanceID: 11412}
+      Script: {instanceID: 11360}
     - Class: 114
-      Script: {instanceID: 11708}
+      Script: {instanceID: 11414}
     - Class: 114
-      Script: {instanceID: 11786}
+      Script: {instanceID: 11710}
     - Class: 114
-      Script: {instanceID: 19220}
+      Script: {instanceID: 11788}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -177,53 +178,55 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 10286}
     - Class: 114
-      Script: {instanceID: 10298}
+      Script: {instanceID: 10300}
     - Class: 114
-      Script: {instanceID: 10376}
+      Script: {instanceID: 10378}
     - Class: 114
-      Script: {instanceID: 10440}
+      Script: {instanceID: 10442}
     - Class: 114
-      Script: {instanceID: 10586}
+      Script: {instanceID: 10588}
     - Class: 114
-      Script: {instanceID: 10628}
+      Script: {instanceID: 10630}
     - Class: 114
-      Script: {instanceID: 10690}
+      Script: {instanceID: 10692}
     - Class: 114
-      Script: {instanceID: 10812}
-    - Class: 114
-      Script: {instanceID: 10864}
+      Script: {instanceID: 10814}
     - Class: 114
       Script: {instanceID: 10866}
     - Class: 114
-      Script: {instanceID: 10938}
+      Script: {instanceID: 10868}
     - Class: 114
-      Script: {instanceID: 10998}
+      Script: {instanceID: 10940}
     - Class: 114
-      Script: {instanceID: 11018}
+      Script: {instanceID: 11000}
     - Class: 114
-      Script: {instanceID: 11026}
+      Script: {instanceID: 11020}
     - Class: 114
-      Script: {instanceID: 11040}
+      Script: {instanceID: 11028}
     - Class: 114
-      Script: {instanceID: 11224}
+      Script: {instanceID: 11042}
     - Class: 114
-      Script: {instanceID: 11232}
+      Script: {instanceID: 11226}
     - Class: 114
-      Script: {instanceID: 11238}
+      Script: {instanceID: 11234}
     - Class: 114
-      Script: {instanceID: 11358}
+      Script: {instanceID: 11240}
     - Class: 114
-      Script: {instanceID: 11436}
+      Script: {instanceID: 11360}
     - Class: 114
-      Script: {instanceID: 11458}
+      Script: {instanceID: 11438}
     - Class: 114
-      Script: {instanceID: 11708}
+      Script: {instanceID: 11460}
     - Class: 114
-      Script: {instanceID: 11786}
+      Script: {instanceID: 11710}
     - Class: 114
-      Script: {instanceID: 11818}
+      Script: {instanceID: 11788}
     - Class: 114
-      Script: {instanceID: 11826}
+      Script: {instanceID: 11820}
+    - Class: 114
+      Script: {instanceID: 11828}
+    - Class: 114
+      Script: {instanceID: 47440}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -593,7 +596,7 @@ ScriptsOnlyBuild:
     className: Block
   - hash:
       serializedVersion: 2
-      Hash: 566f13180bb0f51321c27c2aed93c47d
+      Hash: 76a7ffc029e68751559c8eb7197a19e0
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -663,6 +666,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerScript
+  - hash:
+      serializedVersion: 2
+      Hash: 879313fb903036ba93013971039f0a02
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CameraBehaviour
   - hash:
       serializedVersion: 2
       Hash: caa533b001ae39b864ba8425019e2268
@@ -1301,7 +1310,7 @@ ScriptsOnlyBuild:
     className: ProceduralController
   - hash:
       serializedVersion: 2
-      Hash: db39c83a02d5a67b14a4274572432902
+      Hash: c55e0e84e9120a75188820acd2e64ad9
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Instantiator
@@ -1619,13 +1628,13 @@ ScriptsOnlyBuild:
     className: PlayableTrack
   - hash:
       serializedVersion: 2
-      Hash: 879313fb903036ba93013971039f0a02
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: CameraBehaviour
+    className: PickUp
   platform: 5
   scenePathNames:
   - Assets/Scenes/Menu.unity
   - Assets/Scenes/GameScene.unity
-  playerPath: C:/Users/Rodrigo/Documents/TP Redes 1-Garbagna y Rusconi/BUILD/TP Redes
-    1-Garbagna y Rusconi.exe
+  playerPath: C:/Users/ramag/Desktop/UADE/Redes/TP1/TP-1-Redes-Build/TP Redes 1-Garbagna
+    y Rusconi.exe

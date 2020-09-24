@@ -40,35 +40,37 @@ public class BulletTest : MonoBehaviourPun //El nombre es bullet test porque par
         PhotonNetwork.Destroy(gameObject);
     }
     
-    private void OnCollisionEnter(Collision collision) //PADRE ESCUCHE, aca no tendriamos que hacer algun tipo de checkeo que la bala solo tome el impacto si isMine o si es el masterclient?
+    private void OnCollisionEnter(Collision collision)
     {
         //Si soy el dueño, desruyo la bala
         if (photonView.IsMine)
         {
             PhotonNetwork.Destroy(gameObject);
+
+
+            //Selecciono y ejecuto las particulas
+            string selectedBullet = "";
+            switch (bulletType)
+            {
+                case 0:
+                    selectedBullet = _fireParticleSystem;
+                    //Agregar comportamiento correspondiente a la bala de fuego
+                    break;
+
+                case 1:
+                    selectedBullet = _iceParticleSystem;
+                    //Agregar comportamiento correspondiente a la bala de hielo
+                    break;
+
+                case 2:
+                    selectedBullet = _confusionParticleSystem;
+                    //Agregar comportamiento correspondiente a la bala de confusion
+                    break;
+            }
+            Quaternion particleRot = new Quaternion(-90, 0, 0, 0);
+            PhotonNetwork.Instantiate(selectedBullet, transform.position, particleRot);
         }
 
-        //Selecciono y ejecuto las particulas
-        string selectedBullet = "";
-        switch (bulletType)
-        {
-            case 0:
-                selectedBullet = _fireParticleSystem;
-                //Agregar comportamiento correspondiente a la bala de fuego
-                break;
-
-            case 1:
-                selectedBullet = _iceParticleSystem;
-                //Agregar comportamiento correspondiente a la bala de hielo
-                break;
-
-            case 2:
-                selectedBullet = _confusionParticleSystem;
-                //Agregar comportamiento correspondiente a la bala de confusion
-                break;
-        }
-        Quaternion particleRot = new Quaternion(-90, 0, 0, 0);
-        PhotonNetwork.Instantiate(selectedBullet, transform.position, particleRot);
 
         //Aplico el daño al enemigo
         var enemy = collision.gameObject.GetComponent<EnemyAI>();

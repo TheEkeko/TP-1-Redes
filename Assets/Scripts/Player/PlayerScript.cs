@@ -36,6 +36,8 @@ public class PlayerScript : MonoBehaviourPun
             cB = Camera.main.gameObject.GetComponentInParent<CameraBehaviour>();
             cB.GetPlayer(this.gameObject);
         }
+
+        isDead = false;
     }
 
     void Update()
@@ -58,49 +60,34 @@ public class PlayerScript : MonoBehaviourPun
             transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.down);
 
 
-            if (Input.GetKeyDown(KeyCode.Mouse0)) photonView.RPC("Shoot", RpcTarget.MasterClient);
+            if (Input.GetKeyDown(KeyCode.Mouse0)) Shoot();
+                //photonView.RPC("Shoot", RpcTarget.MasterClient);
         }
+
+        if (Input.GetKeyDown(KeyCode.O)) photonView.RPC("RespawnRPC", RpcTarget.All);
     }
 
     [PunRPC]
     public void ChangeLife(float value)
     {
-        if (photonView.IsMine) 
-        { 
-            hp.ChangeLife(value);
-            hpText.text = ("HP: " + hp.HP);
-        }
+        hp.ChangeLife(value);
+        
+        if (photonView.IsMine) hpText.text = ("HP: " + hp.HP);
     }
 
     void Die()
     {
-        if(photonView.IsMine)
-        { 
-            isDead = true;
-            Vector3 deadPos = new Vector3(500, 500, 500);
-            transform.position = deadPos;
-        
-            cB.StopFollowing();
-            hpText.text = ("Dead");
-            _gameManager.CheckEndgame();
-        }
-    }
-
-    [PunRPC]
-    void RespawnRPC(Vector3 pos)
-    {
+        isDead = true;
+        print("me llamo");
         if (photonView.IsMine)
         {
-            pos.y += 1;
-            hp.MaxLife();
-            isDead = false;
-            hpText.text = ("HP: 100");
-            Debug.Log(hp.HP);
-            cB.GetPlayer(this.gameObject);
-            this.gameObject.transform.position = pos; //POR QUE VERGA ESTO NO FUNCA??? Lo probe escribir de todas las maneras que se me ocurrio
-            
-            //setPosition(pos);
+            Vector3 deadPos = new Vector3(500, 500, 500);
+            transform.position = deadPos;
+            cB.StopFollowing();
+            hpText.text = ("Dead");
         }
+
+        if (PhotonNetwork.IsMasterClient) _gameManager.CheckEndgame();
     }
 
     public bool IsDead
@@ -121,9 +108,19 @@ public class PlayerScript : MonoBehaviourPun
         photonView.RPC("ChangeLife", RpcTarget.All, value);
     }
 
-    public void Respawn(Vector3 pos)
+    public void MaxHp()
     {
-        photonView.RPC("RespawnRPC", RpcTarget.All, pos);
+        photonView.RPC("MaxHpRPC", RpcTarget.All);
+    }
+
+    [PunRPC]
+    public void MaxHpRPC()
+    {
+        hp.MaxLife();
+        if (photonView.IsMine)
+        {
+            hpText.text = ("HP: " + hp.HP);
+        }
     }
 
     /*public void setPosition(Vector3 pos) //Probe esto a ver si ahi si cambiaba la posicion pero nada

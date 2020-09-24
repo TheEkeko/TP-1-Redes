@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     float _timer;
     List<GameObject> _enemyList;
     int _actualWave;
+    float _pickUpTimer;
 
     //Referencias a la ubicación de los enemigos
     const string _slimePrefab = "Prefabs/EnemyPrefabs/Slime";
@@ -26,7 +27,9 @@ public class GameManager : MonoBehaviourPunCallbacks
     const string _ghostPrefab = "Prefabs/EnemyPrefabs/Ghost";
     const string _skeletonPrefab = "Prefabs/EnemyPrefabs/Skeleton";
 
-    [SerializeField] List<Vector3> _respawnPoints;
+    //Referencia a la ubicacion del Pickup
+    const string _pickUpPrefab = "Prefabs/GameplayPrefabs/PickUp";
+
 
     private void Awake()
     {
@@ -39,6 +42,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         _enemyList = new List<GameObject>();
         _playerList = new List<PlayerScript>();
         _actualWave = 0;
+        _pickUpTimer = 30f;
     }
 
     private void Update()
@@ -54,6 +58,17 @@ public class GameManager : MonoBehaviourPunCallbacks
         else
         {
             WaveControl();
+            PickUpSpawn();
+        }
+    }
+
+    void PickUpSpawn()
+    {
+        if (_pickUpTimer > 0) _pickUpTimer -= Time.deltaTime;
+        else
+        {
+            PhotonNetwork.Instantiate(_pickUpPrefab, Vector3.zero, Quaternion.identity);
+            _pickUpTimer = 30f;
         }
     }
 
@@ -87,7 +102,6 @@ public class GameManager : MonoBehaviourPunCallbacks
             {
                 SpawnWave();
                 _actualWave++;
-                PlayerRespawner();
             }
 
             if (_actualWave == _maxWaves && _enemyList.Count == 0) photonView.RPC("WinGame", RpcTarget.All);
@@ -164,20 +178,6 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
 
         if (!isSomebodyAlive) photonView.RPC("EndGame", RpcTarget.All);
-    }
-
-    //Funcion que respawnea los players
-    void PlayerRespawner()
-    {
-        int count = 0;
-        for (int i = 0; i < _playerList.Count; i++)
-        {
-            if(_playerList[i].IsDead==true)
-            {
-                _playerList[i].Respawn(_respawnPoints[count]);
-                count++;
-            }
-        }
     }
 
     [PunRPC]

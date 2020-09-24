@@ -9,7 +9,8 @@ public class Instantiator : MonoBehaviourPunCallbacks
 {
     [SerializeField] GameManager _gameManager;
     [SerializeField] Text hpText;
-    [SerializeField] GameObject player;
+    [SerializeField] Transform[] spawnLocation;
+
     void Start()
     {
         /* Instancio el prefab PlayerPrefab, esto supongo que o en la clase 5 explicara otro metodo,
@@ -18,9 +19,14 @@ public class Instantiator : MonoBehaviourPunCallbacks
          Para que esto funcione los prefabs tienen que tener el componente PhotonView 
 
         PhotonNetwork.Instantiate("Prefabs/PlayerPrefabs/PlayerPrefab", Vector3.zero, Quaternion.identity); */
+        InstantiateMe();
+    }
+
+    public void InstantiateMe()
+    {
         string playerClass = "";
         int playerClassIndex = ClassManager.Instance.PlayerClass;
-        switch(playerClassIndex)
+        switch (playerClassIndex)
         {
             case 0:
                 playerClass = "Prefabs/PlayerPrefabs/FireClassPrefab";
@@ -33,7 +39,10 @@ public class Instantiator : MonoBehaviourPunCallbacks
                 break;
         }
 
-        player = PhotonNetwork.Instantiate(playerClass, Vector3.zero, Quaternion.identity);
-        player.GetComponent<PlayerScript>().getHpText(hpText);
+        var spawnPos = spawnLocation[PhotonNetwork.LocalPlayer.ActorNumber - 1].position;
+        var player = PhotonNetwork.Instantiate(playerClass, spawnPos, Quaternion.identity);
+
+        var playerStript = player.GetComponent<PlayerScript>();
+        playerStript.getHpText(hpText);
     }
 }

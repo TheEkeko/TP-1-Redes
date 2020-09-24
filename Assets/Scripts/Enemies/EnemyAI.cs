@@ -22,14 +22,13 @@ public class EnemyAI : MonoBehaviourPunCallbacks
     private void Start()
     {
         //Esto solo lo tiene que hacer el MasterClient porque él maneja los enemigos
-        if (PhotonNetwork.IsMasterClient) 
-        {
-            //Agarro la lista de objetos de player conectados y selecciono uno para perseguir
-            _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-            _playerList = _gameManager.GetPlayerList();
-            GetTarget();
-        }
-
+        if (!PhotonNetwork.IsMasterClient) return;
+       
+        //Agarro la lista de objetos de player conectados y selecciono uno para perseguir
+        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        _playerList = _gameManager.GetPlayerList();
+        GetTarget();
+        
         //Agarro el RB
         if (photonView.IsMine) _rb = GetComponent<Rigidbody>();
 
@@ -98,14 +97,17 @@ public class EnemyAI : MonoBehaviourPunCallbacks
     //Funcion que realiza daño
     public void GetDamaged(float damage)
     {
-        _health.ChangeLife(damage);
+        if (PhotonNetwork.IsMasterClient) _health.ChangeLife(damage);
     }
 
     //Funcion que se ejecuta al morir
     void Death()
     {
-        _gameManager.EnemyList.Remove(gameObject);
-        PhotonNetwork.Destroy(gameObject);
+        if (PhotonNetwork.IsMasterClient)
+        {
+            _gameManager.EnemyList.Remove(gameObject);
+            PhotonNetwork.Destroy(gameObject);
+        }
     }
 
     void Attack()
