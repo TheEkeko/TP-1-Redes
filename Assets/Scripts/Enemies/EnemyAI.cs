@@ -114,7 +114,7 @@ public class EnemyAI : MonoBehaviourPunCallbacks
         {
             if (_skeletonAnim) _skeletonAnim.Attack();
 
-            _targetScript.ChangeLife(damage);
+            _targetScript.GetDamaged(damage);
             _attackCooldown = _maxAttackCooldown;
 
             if (_targetScript.IsDead) GetTarget();

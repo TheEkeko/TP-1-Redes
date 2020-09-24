@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviourPunCallbacks
     const string _ghostPrefab = "Prefabs/EnemyPrefabs/Ghost";
     const string _skeletonPrefab = "Prefabs/EnemyPrefabs/Skeleton";
 
+    [SerializeField] List<Vector3> _respawnPoints;
+
     private void Awake()
     {
         //Si no es masterclient, chau
@@ -85,6 +87,7 @@ public class GameManager : MonoBehaviourPunCallbacks
             {
                 SpawnWave();
                 _actualWave++;
+                PlayerRespawner();
             }
 
             if (_actualWave == _maxWaves && _enemyList.Count == 0) photonView.RPC("WinGame", RpcTarget.All);
@@ -161,6 +164,20 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
 
         if (!isSomebodyAlive) photonView.RPC("EndGame", RpcTarget.All);
+    }
+
+    //Funcion que respawnea los players
+    void PlayerRespawner()
+    {
+        int count = 0;
+        for (int i = 0; i < _playerList.Count; i++)
+        {
+            if(_playerList[i].IsDead==true)
+            {
+                _playerList[i].Respawn(_respawnPoints[count]);
+                count++;
+            }
+        }
     }
 
     [PunRPC]

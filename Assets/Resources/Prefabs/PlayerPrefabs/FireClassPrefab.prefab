@@ -171,6 +171,8 @@ MonoBehaviour:
   mousePosition: {x: 0, y: 0, z: 0}
   isDead: 0
   initialhealth: 100
+  hpText: {fileID: 0}
+  cB: {fileID: 0}
 --- !u!143 &1754410559449458078
 CharacterController:
   m_ObjectHideFlags: 0

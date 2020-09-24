@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using UnityEngine.UI;
 
 public class Instantiator : MonoBehaviourPunCallbacks
 {
     [SerializeField] GameManager _gameManager;
-
+    [SerializeField] Text hpText;
+    [SerializeField] GameObject player;
     void Start()
     {
         /* Instancio el prefab PlayerPrefab, esto supongo que o en la clase 5 explicara otro metodo,
@@ -31,6 +33,7 @@ public class Instantiator : MonoBehaviourPunCallbacks
                 break;
         }
 
-        PhotonNetwork.Instantiate(playerClass, Vector3.zero, Quaternion.identity);
+        player = PhotonNetwork.Instantiate(playerClass, Vector3.zero, Quaternion.identity);
+        player.GetComponent<PlayerScript>().getHpText(hpText);
     }
 }
