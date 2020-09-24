@@ -74,7 +74,7 @@ public class BulletTest : MonoBehaviourPun //El nombre es bullet test porque par
 
         //Aplico el daño al enemigo
         var enemy = collision.gameObject.GetComponent<EnemyAI>();
-        enemy.GetDamaged(10f);
+        if (enemy) enemy.GetDamaged(10f);
 
     }
 

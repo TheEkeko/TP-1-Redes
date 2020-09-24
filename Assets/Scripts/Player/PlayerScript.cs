@@ -21,7 +21,6 @@ public class PlayerScript : MonoBehaviourPun
     [SerializeField] CameraBehaviour cB;
     private void Awake()
     {
-
         cc = GetComponent<CharacterController>();
 
         if (PhotonNetwork.IsMasterClient)
@@ -61,10 +60,7 @@ public class PlayerScript : MonoBehaviourPun
 
 
             if (Input.GetKeyDown(KeyCode.Mouse0)) Shoot();
-                //photonView.RPC("Shoot", RpcTarget.MasterClient);
         }
-
-        if (Input.GetKeyDown(KeyCode.O)) photonView.RPC("RespawnRPC", RpcTarget.All);
     }
 
     [PunRPC]

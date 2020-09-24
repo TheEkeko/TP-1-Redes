@@ -6,7 +6,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviourPunCallbacks
 {
     //Constantes
-    const int _minPlayersToStartGame = 1;
+    const int _minPlayersToStartGame = 2;
     const int _minEnemiesToStartWave = 1;
     const int _maxWaves = 4;
 
